@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
-
+ruby "2.3.0" # specify ruby version for heroku
 
 # USER MANAGEMENT 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use sqlite3 as the database for Active Record > GOT SWITCHED TO PG BECAUSE ITS A REAL DATABASE postgress - concurrent read/write
+gem 'pg'
+# rails factor installs all the rest of dependencies needed to deploy to heroku
+gem 'rails_12factor', group: :production # dont install locally only on heroku
 # BOOTSTRAP SASS
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use SCSS for stylesheets
