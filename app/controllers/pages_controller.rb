@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
   def home
     @posts = Post.all
+    @newPost = Post.new
   end
 
   def profile
@@ -14,9 +15,12 @@ class PagesController < ApplicationController
     #404 redirect
     redirect_to root_path, :notice=> 'User not found!'
    end 
-   @posts = Post.all.where('user_id - ?', User.find_by_username(params[:id]).id)
+   
+   @tofollow = User.all
+   @posts = Post.all.where('user_id = ?', User.find_by_username(params[:id]).id)
+   @newPost = Post.new
   end
-
+  
   def explore
     @posts = Post.all
   end

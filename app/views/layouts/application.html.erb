@@ -8,10 +8,38 @@
 </head>
 <body>
   
-     
-  
   <%= render '/layouts/nav' %>
+  
+  
+  <% if params[:id] != nil %>
+  <% @url = "/user/" + params[:id] %>
+  <% if current_page?(@url) %>
+  
+  
+  <img src="/green.jpg" class="profile-banner"> 
+  <div class="row">
+  <div class="col-sm-12" style="background-color: white">
+    <div class="container">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+    <div class="col-sm-2">Post<br>
+      <h6 style="color: #008b00; font-size: 200%;"><%= User.find_by_username(params[:id]).posts.count %></h6> </div> 
+    <div class="col-sm-2">Followers<br> 
+     <h6 style="color: #008b00; font-size: 200%;"><%= User.find_by_username(params[:id]).followers.count %></h6> </div>   
+ 
+     
+     
+     <% if user_signed_in? %>
+     <div class="col-sm-8" style="text-align: right; margin-top: 18px;"><a href="/users/edit"><li type="button" class="btn btn-default" style="color: green; opacity: 0.8; font-weight: bold;"> Edit Profile</li></a></div>
+     <%end%>
+    </div> 
+    </div>
+    </div>
+    </div>
 
+  <% end %>
+  <% end %>
+  
 <div class="container">
   <span class="notice"><%= notice %></span>
   <span class="alert"><%= alert %></span>
