@@ -6,7 +6,14 @@ gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record > GOT SWITCHED TO PG BECAUSE ITS A REAL DATABASE postgress - concurrent read/write
-gem 'pg'
+
+group :production do
+  gem 'pg'
+end
+
+group :development do 
+  gem 'sqlite3'
+end
 
 #TO DO AN ACTUALLY DB MIGRATION OF DB TO HEROKU
 gem 'yaml_db'
